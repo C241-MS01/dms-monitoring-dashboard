@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 const Interaction = () => {
     return (
         <React.Fragment>
-            <div className="order-7 col-span-12 2xl:order-1 card 2xl:col-span-8">
+            <div className="order-1 col-span-12 2xl:order-1 card 2xl:col-span-8">
                 <div className="card-body">
                     <div className="flex items-center gap-2">
-                        <h6 className="mb-3 text-15 grow">Pages Interaction</h6>
+                        <h6 className="mb-3 text-15 grow">Alerts</h6>
                         <Dropdown className="relative dropdown shrink-0">
                             <Dropdown.Trigger type="button" className="px-2 py-1.5 text-xs bg-text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20 dropdown-toggle" id="emailDataDropdown" data-bs-toggle="dropdown">
                                 This Yearly <ChevronDown className="inline-block size-4 ltr:ml-1 rlt:mr-1"></ChevronDown>

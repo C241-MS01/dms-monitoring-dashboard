@@ -72,7 +72,7 @@ const ConnectedMapsGoogle = connect(
     null,
     {}
 )(GoogleApiWrapper({
-    apiKey: "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",
+    apiKey: "AIzaSyC2oCXn2SwxV277tZu1_kVt-mQhcgI43zo",
     // v: "3",
 })(MapsGoogle));
 

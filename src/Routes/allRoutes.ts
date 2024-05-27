@@ -273,7 +273,6 @@ const authProtectedRoutes: Array<RouteObject> = [
   { path: "/maps-google", component: MapsGoogle },
   { path: "/maps-leaflet", component: MapsLeaflet },
 
-
   //Charts
   { path: "/charts-apex-area", component: AreaCharts },
   { path: "/charts-apex-bar", component: BarCharts },
