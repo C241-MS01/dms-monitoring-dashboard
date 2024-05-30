@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import TableContainer from 'Common/TableContainer';
 import { ProductOrdersData } from "Common/data";
 import { Link } from 'react-router-dom';
 import { MoreHorizontal, Search, Eye, FileEdit, Trash2 } from 'lucide-react';
 import { Dropdown } from 'Common/Components/Dropdown';
+import { Alert, fetchAlerts } from "helpers/AlertApi";
 import filterDataBySearch from 'Common/filterDataBySearch';
 
 const AlertsData = [
@@ -71,8 +72,36 @@ const AlertsData = [
 
 const ProductsOrders = () => {
 
-    const [data, setData] = useState(AlertsData);
+    const [data, setData] = useState<Alert[] | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
+    useEffect(() => {
+      // const getVehicles = async () => {
+      //   setLoading(true);
+      //   try {
+      //     const alertsData = await fetchAlerts();
+      //     console.log("Fetched vehicles:", alertsData); // Debugging log
+      //     if (alertsData.length > 0) {
+      //       setData(alertsData);
+      //       setError(null);
+      //     } else {
+      //       setError("No vehicles found");
+      //     }
+      //   } catch (err) {
+      //     setError("Failed to fetch vehicles");
+      //   }
+      //   setLoading(false);
+      // };
+
+      // getVehicles();
+    }, []);
+
+    useEffect(() => {
+      console.log("Loading:", loading);
+      console.log("Error:", error);
+      console.log("Data:", data);
+    }, [loading, error, data]);
     // Search Data
     // const filterSearchData = (e: any) => {
     //     const search = e.target.value;
@@ -82,12 +111,6 @@ const ProductsOrders = () => {
 
     const columns = useMemo(
       () => [
-        // {
-        //     header: "#",
-        //     accessorKey: "id",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
         {
           header: "Alert Id",
           accessorKey: "alertId",
@@ -103,7 +126,7 @@ const ProductsOrders = () => {
         },
         {
           header: "Time",
-          accessorKey: "time",
+          accessorKey: "timestamp",
           enableColumnFilter: false,
           enableSorting: true,
         },
@@ -113,36 +136,6 @@ const ProductsOrders = () => {
           enableColumnFilter: false,
           enableSorting: true,
         },
-        // {
-        //     header: "Order Date",
-        //     accessorKey: "orderDate",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
-        // {
-        //     header: "Payments",
-        //     accessorKey: "payments",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
-        // {
-        //     header: "Quantity",
-        //     accessorKey: "quantity",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
-        // {
-        //     header: "Price",
-        //     accessorKey: "price",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
-        // {
-        //     header: "Total Amount",
-        //     accessorKey: "totalAmount",
-        //     enableColumnFilter: false,
-        //     enableSorting: true,
-        // },
         {
           header: "Status",
           accessorKey: "status",
@@ -192,18 +185,12 @@ const ProductsOrders = () => {
                   <li>
                     <Link
                       className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                      to="/apps-ecommerce-order-overview"
+                      to={`/alerts/${cell.row.original.alertId}`}
                     >
                       <Eye className="inline-block size-3 ltr:mr-1 rtl:ml-1" />{" "}
                       <span className="align-middle">Overview</span>
                     </Link>
                   </li>
-                  {/* <li>
-                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="#!"><FileEdit className="inline-block size-3 ltr:mr-1 rtl:ml-1"/> <span className="align-middle">Edit</span></Link>
-                            </li>
-                            <li>
-                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="#!"><Trash2 className="inline-block size-3 ltr:mr-1 rtl:ml-1"/> <span className="align-middle">Delete</span></Link>
-                            </li> */}
                 </Dropdown.Content>
               </Dropdown>
             </>

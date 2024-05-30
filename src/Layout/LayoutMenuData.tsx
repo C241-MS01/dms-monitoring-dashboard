@@ -10,7 +10,7 @@ const menuData: any = [
     label: "Overview",
     icon: <LineChart />,
     link: "/dashboard",
-    parentId: 2,
+
   },
   {
     id: "livemonitoring",
@@ -26,6 +26,13 @@ const menuData: any = [
     link: "/dashboards-email",
     parentId: 2,
   },
+  // {
+  //   id: "chat",
+  //   label: "Chat",
+  //   icon: <MessageSquare />,
+  //   link: "/apps-chat",
+  //   parentId: 1,
+  // },
   // {
   //   id: "dashboard",
   //   label: "Dashboards",

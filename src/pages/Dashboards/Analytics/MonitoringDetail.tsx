@@ -4,7 +4,7 @@ import React from 'react'
 
 const MonitoringDetail = ()=>{
     return (
-      <div className="xl:col-span-8">
+      <div className="xl:col-span-8 md:col-span-8">
         <div className="card">
           <div className="card-body">
             <h6 className="text-15 mb-4">Monitoring Detail</h6>
