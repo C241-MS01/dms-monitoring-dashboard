@@ -16,14 +16,14 @@ const menuData: any = [
     id: "livemonitoring",
     label: "Live Monitoring",
     icon: <Video />,
-    link: "/dashboards-analytics",
+    link: "/live-monitoring",
     parentId: 2,
   },
   {
     id: "alerts",
     label: "Alerts",
     icon: <AlertTriangle />,
-    link: "/dashboards-email",
+    link: "/Alerts",
     parentId: 2,
   },
   // {

@@ -1,12 +1,15 @@
 import React, { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
+import { UserAuth } from "helpers/AuthContext";
 
 interface AuthProtectedProps {
   children: ReactNode;
 }
 
 const AuthProtected: React.FC<AuthProtectedProps> = ({ children }) => {
-  if (!localStorage.getItem("authUser")) {
+  const { user } = UserAuth();
+  if (!user) {
+    console.log("User not logged in, redirecting to /login");
     return <Navigate to={{ pathname: "/login" }} />;
   }
 
