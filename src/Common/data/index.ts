@@ -15,8 +15,7 @@ import { MailList } from "./mailbox";
 // Calendar
 import { CalenderCategories, Events } from "./calendar";
 
-// Ecommerce
-import { ListViewData, OrderListData, SellersData, ProductGridViewData, ShoppingCartData, ProductReviewsData } from "./ecommerce";
+
 
 // HR Management
 import { DepartmentsListData, EmployeeListData, HolidaysData, AttendanceData, MainAttendanceData, LeaveManageEmployeeData, LeaveManageHRData, EmployeeSalaryData, EstimatesData, ExpensesData, PaymentsData } from "./hrmanagement";
@@ -68,13 +67,6 @@ export {
     // Calendar
     CalenderCategories, Events,
 
-    // Ecommerce
-    ListViewData,
-    OrderListData,
-    SellersData,
-    ProductGridViewData,
-    ShoppingCartData,
-    ProductReviewsData,
 
     // HR Management
     DepartmentsListData, EmployeeListData, HolidaysData, AttendanceData, MainAttendanceData, LeaveManageEmployeeData, LeaveManageHRData, EmployeeSalaryData, EstimatesData, ExpensesData, PaymentsData,

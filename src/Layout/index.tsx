@@ -6,7 +6,7 @@ import RightSidebar from './RightSidebar';
 import { createSelector } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { Settings } from 'lucide-react';
-import CartDrawer from 'Common/CartDrawer';
+// import CartDrawer from 'Common/CartDrawer';
 
 import {
   changeLayout,
@@ -132,7 +132,6 @@ const Layout = ({ children }: any) => {
         </button>
       </div>}
       <RightSidebar isOpen={isOpen} handleToggleDrawer={handleToggleDrawer} />
-      <CartDrawer show={show} handleDrawer={handleDrawer} />
 
     </>
   );

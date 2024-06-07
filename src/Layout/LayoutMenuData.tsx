@@ -23,7 +23,7 @@ const menuData: any = [
     id: "alerts",
     label: "Alerts",
     icon: <AlertTriangle />,
-    link: "/Alerts",
+    link: "/alerts",
     parentId: 2,
   },
   // {

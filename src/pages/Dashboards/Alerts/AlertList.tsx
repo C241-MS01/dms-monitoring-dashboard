@@ -60,7 +60,7 @@ const AlertList = () => {
         cell: (cell: any) => (
           <div className="flex justify-end">
             <Link
-              to={`/alert/${cell.row.original.alertId}/details`}
+              to={`/alerts/${cell.row.original.alertId}`}
               className="flex items-center justify-center size-8 transition-all duration-200 ease-linear rounded-md bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"
             >
               <ChevronRight className="size-4" />

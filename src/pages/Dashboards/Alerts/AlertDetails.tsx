@@ -5,11 +5,13 @@ import Map from "Common/Components/Map";
 
 
 const AlertDetail = () => {
+  const param = useParams();
+
   return (
     <div className="xl:col-span-6 md:col-span-6">
       <div className="card">
         <div className="card-body">
-          <h6 className="text-15 mb-4">sasasa</h6>
+          <h6 className="text-15 mb-4">{param.alert}</h6>
           <div className="flex justify-center mb-4">
             <div
               className="relative"

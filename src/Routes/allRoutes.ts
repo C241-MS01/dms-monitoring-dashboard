@@ -67,7 +67,7 @@ const publicRoutes = [
   { path: "/login", component: Basic },
 
   // Register
-  { path: "/auth-register-basic", component: BasicRegister },
+  { path: "/register", component: BasicRegister },
 
   // Verify Email
   { path: "/auth-verify-email-basic", component: BasicEmailVerify },
