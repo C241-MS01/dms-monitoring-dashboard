@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronsLeft, ChevronsRight, Gem, LogOut, Mail, MessagesSquare, Search, Settings, ShoppingCart, User2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,23 +11,19 @@ import logoDark from "assets/images/logo-dark.png";
 import logoLight from "assets/images/logo-light.png";
 
 //import components
-import LanguageDropdown from 'Common/LanguageDropdown';
 import LightDark from 'Common/LightDark';
-import NotificationDropdown from 'Common/NotificationDropdown';
-import { Dropdown } from 'Common/Components/Dropdown';
 import { changeLeftsidebarSizeType } from 'slices/thunk';
-import { UserAuth } from 'helpers/AuthContext';
+import authService, { User } from "helpers/auth.service";
+import { Dropdown } from 'Common/Components/Dropdown';
 
 const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
 
     const dispatch = useDispatch<any>();
-
-     const { user, logout } = UserAuth();
      const navigate = useNavigate();
 
      const handleLogout = async () => {
        try {
-         await logout();
+         await authService.logout();
          navigate("/");
          console.log("You are logged out");
        } catch (e) {
@@ -36,6 +32,16 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
          } 
        }
      };
+
+     const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+     useEffect(() => {
+       const user = authService.getCurrentUser();
+
+       if (user) {
+         setCurrentUser(user);
+       }
+     }, []);
 
     // react-redux
     const selectLayoutState = (state: any) => state.Layout;
@@ -243,7 +249,9 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
                         <span className="-top-1 ltr:-right-1 rtl:-left-1 absolute size-2.5 bg-green-400 border-2 border-white rounded-full dark:border-zink-600"></span>
                       </div>
                       <div>
-                        <h6 className="mb-1 text-15">{user && user.email}</h6>
+                        <h6 className="mb-1 text-15">
+                          {currentUser && currentUser.email}
+                        </h6>
                         <p className="text-slate-500 dark:text-zink-300">
                           CEO & Founder
                         </p>

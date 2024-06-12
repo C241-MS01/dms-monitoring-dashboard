@@ -1,13 +1,13 @@
 import React, { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { UserAuth } from "helpers/AuthContext";
+import AuthService  from "helpers/auth.service";
 
 interface PublicRouteProps {
   children: ReactNode;
 }
 
 const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
-  const { user } = UserAuth();
+  const user = AuthService.getCurrentUser();
   if (!user) {
    
     return <React.Fragment>{children}</React.Fragment>;

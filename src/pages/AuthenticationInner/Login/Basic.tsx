@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Facebook, Github, Mail, Twitter } from "lucide-react";
 import AuthIcon from "../AuthIcon";
 
 // Image
 import logoLight from "assets/images/logo-braincore-dark.png";
 import logoDark from "assets/images/logo-braincore-light.png";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "helpers/AuthContext";
+import authService from "helpers/auth.service";
 
 const Basic = () => {
 
@@ -16,13 +15,12 @@ const Basic = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-    const { signIn } = UserAuth();
     
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       setError("");
       try {
-        await signIn(email, password);
+        await authService.login(email, password);
         navigate("/");
       } catch (e) {
         if (e instanceof Error) {

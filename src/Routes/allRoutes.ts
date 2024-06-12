@@ -4,37 +4,37 @@ import LiveMonitoring from "pages/Dashboards/LiveMonitoring";
 import Overview from "pages/Dashboards/Overview";
 import Alerts from "pages/Dashboards/Alerts";
 
-// plugins
-import PSimpleBar from "pages/Components/Plugins/Simplebar";
-import VideoPlayer from "pages/Components/Plugins/VideoPlayer";
+// // plugins
+// import PSimpleBar from "pages/Components/Plugins/Simplebar";
+// import VideoPlayer from "pages/Components/Plugins/VideoPlayer";
 
-// forms
-import ReactDataTable from "pages/Components/Table/ReactTable";
+// // forms
+// import ReactDataTable from "pages/Components/Table/ReactTable";
 
-// auth
+// // auth
 import Basic from "../pages/AuthenticationInner/Login/Basic";
 
-//Register
-import BasicRegister from "../pages/AuthenticationInner/Register/Basic";
+// //Register
+// import BasicRegister from "../pages/AuthenticationInner/Register/Basic";
 
-// EmailVerify
-import BasicEmailVerify from "../pages/AuthenticationInner/VerifyEmail/Basic";
+// // EmailVerify
+// import BasicEmailVerify from "../pages/AuthenticationInner/VerifyEmail/Basic";
 
-// TwoSteps
-import BasicTwoSteps from "../pages/AuthenticationInner/TwoSteps/Basic";
+// // TwoSteps
+// import BasicTwoSteps from "../pages/AuthenticationInner/TwoSteps/Basic";
 
-// Logout
-import BasicLogout from "../pages/AuthenticationInner/Logout/Basic";
+// // Logout
+// import BasicLogout from "../pages/AuthenticationInner/Logout/Basic";
 
-// Reset Password
-import BasicResetPassword from "../pages/AuthenticationInner/ResetPassword/Basic";
+// // Reset Password
+// import BasicResetPassword from "../pages/AuthenticationInner/ResetPassword/Basic";
 
-// Create Password
-import Pages404 from "../pages/AuthenticationInner/Pages404";
-import UserProfile from "../pages/Authentication/UserProfile";
-import ComingSoon from "../pages/AuthenticationInner/ComingSoon";
-import Offline from "../pages/AuthenticationInner/Offline";
-import Maintenance from "../pages/AuthenticationInner/Maintenance";
+// // Create Password
+// import Pages404 from "../pages/AuthenticationInner/Pages404";
+// import UserProfile from "../pages/Authentication/UserProfile";
+// import ComingSoon from "../pages/AuthenticationInner/ComingSoon";
+// import Offline from "../pages/AuthenticationInner/Offline";
+// import Maintenance from "../pages/AuthenticationInner/Maintenance";
 
 interface RouteObject {
   path: string;
@@ -49,49 +49,44 @@ const authProtectedRoutes: Array<RouteObject> = [
   { path: "/live-monitoring", component: LiveMonitoring },
   { path: "/alerts/:alert", component: Alerts },
   { path: "/alerts", component: Alerts },
-  // Ui Element
+  // // Ui Element
 
-  // plugins
-  { path: "/plugins-simplebar", component: PSimpleBar },
-  { path: "/plugins-video-player", component: VideoPlayer },
+  // // plugins
+  // { path: "/plugins-simplebar", component: PSimpleBar },
+  // { path: "/plugins-video-player", component: VideoPlayer },
 
-  // Table
-  { path: "/tables-datatable", component: ReactDataTable },
+  // // Table
+  // { path: "/tables-datatable", component: ReactDataTable },
 
-  // profile
-  { path: "/user-profile", component: UserProfile },
+  // // profile
+  // { path: "/user-profile", component: UserProfile },
 ];
 
 const publicRoutes = [
   // auth
   { path: "/login", component: Basic },
 
-  // Register
-  { path: "/register", component: BasicRegister },
+  // // Register
+  // { path: "/register", component: BasicRegister },
 
-  // Verify Email
-  { path: "/auth-verify-email-basic", component: BasicEmailVerify },
 
-  // two steps
-  { path: "/auth-two-steps-basic", component: BasicTwoSteps },
+  // // logout
+  // { path: "/logout", component: BasicLogout },
 
-  // logout
-  { path: "/logout", component: BasicLogout },
+  // //Reset Password
+  // { path: "/auth-reset-password-basic", component: BasicResetPassword },
 
-  //Reset Password
-  { path: "/auth-reset-password-basic", component: BasicResetPassword },
+  // //Create Password
 
-  //Create Password
+  // // coming soon
+  // { path: "/pages-coming-soon", component: ComingSoon },
 
-  // coming soon
-  { path: "/pages-coming-soon", component: ComingSoon },
+  // // Error
+  // { path: "/pages-offline", component: Offline },
+  // { path: "/pages-404", component: Pages404 },
 
-  // Error
-  { path: "/pages-offline", component: Offline },
-  { path: "/pages-404", component: Pages404 },
-
-  // Maintenance
-  { path: "/pages-maintenance", component: Maintenance },
+  // // Maintenance
+  // { path: "/pages-maintenance", component: Maintenance },
 ];
 
 export { authProtectedRoutes, publicRoutes };
