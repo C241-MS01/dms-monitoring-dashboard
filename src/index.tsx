@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './slices';
 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

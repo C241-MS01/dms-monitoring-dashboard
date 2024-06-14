@@ -274,14 +274,14 @@ const TableContainer = ({
 
       {isPagination && (
         <div className={PaginationClassName}>
-          <div className="col-span-12 xl:col-span-4 md:col-span-12 mb-4  grow md:mb-0">
+          <div className="col-span-12 xl:col-span-12 md:col-span-12 mb-4  grow md:mb-0">
             <div className="text-slate-500 dark:text-zink-200 md:text-center">
               Showing
               <b> {getState().pagination.pageSize}</b> of
               <b> {data.length}</b> Results
             </div>
           </div>
-          <ul className="col-span-12 xl:col-span-8 md:col-span-12 justify-center xl:justify-end 2xl:justify-end flex flex-wrap items-center gap-2 shrink-0">
+          <ul className="col-span-12 xl:col-span-12 md:col-span-12 justify-center  flex flex-wrap items-center gap-2 shrink-0">
             <li>
               <Link
                 to="#!"

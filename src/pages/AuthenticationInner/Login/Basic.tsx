@@ -117,6 +117,7 @@ const Basic = () => {
                   Password must be at least 8 characters long and contain both
                   letters and numbers.
                 </div>
+                {error ? <div>Error: {error}</div> : <div></div>}
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -148,10 +149,6 @@ const Basic = () => {
                   Sign In
                 </button>
               </div>
-
-              
-
-              
             </form>
           </div>
         </div>

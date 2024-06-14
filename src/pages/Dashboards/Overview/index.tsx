@@ -3,7 +3,7 @@ import BreadCrumb from 'Common/BreadCrumb';
 import Widgets from './Widgets';
 import Interaction from "./Interaction";
 
-import ProductsOrders from './ProductsOrders';
+import ProductsOrders from './AlertHistory';
 
 
 import { useNavigate } from 'react-router-dom';

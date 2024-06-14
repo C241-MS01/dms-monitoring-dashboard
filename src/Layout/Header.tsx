@@ -35,13 +35,14 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
 
      const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-     useEffect(() => {
-       const user = authService.getCurrentUser();
+      useEffect(() => {
+        const user = authService.getCurrentUser();
+        console.log(user);
 
-       if (user) {
-         setCurrentUser(user);
-       }
-     }, []);
+        if (user && user.user && user.user.email) {
+          setCurrentUser(user);
+        }
+      }, []);
 
     // react-redux
     const selectLayoutState = (state: any) => state.Layout;
@@ -250,7 +251,7 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
                       </div>
                       <div>
                         <h6 className="mb-1 text-15">
-                          {currentUser && currentUser.email}
+                          {currentUser && currentUser.user.email}
                         </h6>
                         <p className="text-slate-500 dark:text-zink-300">
                           CEO & Founder

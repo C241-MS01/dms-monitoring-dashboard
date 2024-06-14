@@ -18,7 +18,7 @@ const MonitoringDetail = () => {
         console.log("subscribed to video topic");
       });
     });
-
+    //client.publish("close_stream", streamId); // publish the stream id to notify the server to remove the stream id in the database
     client.on("message", (topic, message) => {
       if (imgRef.current) {
         imgRef.current.src = "data:image/jpeg;base64," + message.toString();
@@ -39,6 +39,12 @@ const MonitoringDetail = () => {
             <div className="flex justify-center mb-2">
               <img ref={imgRef} className="h-full w-auto" alt="Video Stream" />
             </div>
+            <button
+              type="submit"
+              className="w-full text-white btn bg-red-500 border-red-500 hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+            >
+              Stop Stream
+            </button>
           </div>
         </div>
       </div>

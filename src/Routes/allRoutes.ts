@@ -6,7 +6,7 @@ import Alerts from "pages/Dashboards/Alerts";
 
 // // plugins
 // import PSimpleBar from "pages/Components/Plugins/Simplebar";
-// import VideoPlayer from "pages/Components/Plugins/VideoPlayer";
+import VideoPlayer from "pages/Components/Plugins/VideoPlayer";
 
 // // forms
 // import ReactDataTable from "pages/Components/Table/ReactTable";
@@ -44,16 +44,18 @@ interface RouteObject {
 
 const authProtectedRoutes: Array<RouteObject> = [
   // Dashboard
-  { path: "/", component: Overview },
+  { path: "/", component: LiveMonitoring },
   { path: "/dashboard", component: Overview },
   { path: "/live-monitoring", component: LiveMonitoring },
-  { path: "/alerts/:alert", component: Alerts },
-  { path: "/alerts", component: Alerts },
+  { path: "/live-monitoring/:vehicle", component: LiveMonitoring },
+  { path: "/history/:vehicleId", component: Alerts },
+  { path: "/history/:vehicleId/:videoId", component: Alerts },
+  { path: "/history", component: Alerts },
   // // Ui Element
 
   // // plugins
   // { path: "/plugins-simplebar", component: PSimpleBar },
-  // { path: "/plugins-video-player", component: VideoPlayer },
+  { path: "/plugins-video-player", component: VideoPlayer },
 
   // // Table
   // { path: "/tables-datatable", component: ReactDataTable },

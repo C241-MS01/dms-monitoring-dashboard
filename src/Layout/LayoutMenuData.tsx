@@ -1,17 +1,18 @@
+import axios from "axios";
 import { AlertTriangle, Award, CalendarDays, CircuitBoard,  Codesandbox, FileText, LifeBuoy, LineChart, LocateFixed, Mail, Map, MessageSquare, MonitorDot, PackagePlus, PictureInPicture2, PieChart, RadioTower, ScrollText, Share2, ShoppingBag, Table, Trophy, UserRound, Video } from "lucide-react";
+
 
 const menuData: any = [
   {
     label: "menu",
     isTitle: true,
   },
-  {
-    id: "overview",
-    label: "Overview",
-    icon: <LineChart />,
-    link: "/dashboard",
-
-  },
+  // {
+  //   id: "overview",
+  //   label: "Overview",
+  //   icon: <LineChart />,
+  //   link: "/dashboard",
+  // },
   {
     id: "livemonitoring",
     label: "Live Monitoring",
@@ -20,11 +21,24 @@ const menuData: any = [
     parentId: 2,
   },
   {
-    id: "alerts",
-    label: "Alerts",
+    id: "history",
+    label: "History",
     icon: <AlertTriangle />,
-    link: "/alerts",
-    parentId: 2,
+    link: "/history",
+    subitems: [
+      {
+        id: "analyticsdashboard",
+        label: "Analytics",
+        link: "/dashboards-analytics",
+        parentId: "history",
+      },
+      {
+        id: "analyticsdashboard",
+        label: "Analytics",
+        link: "/dashboards-analytics",
+        parentId: "history",
+      },
+    ],
   },
   // {
   //   id: "chat",
@@ -34,34 +48,34 @@ const menuData: any = [
   //   parentId: 1,
   // },
   // {
-  //   id: "dashboard",
-  //   label: "Dashboards",
+  //   id: "history",
+  //   label: "History",
   //   link: "/#",
-  //   icon: <MonitorDot />,
+  //   icon: <AlertTriangle />,
   //   subItems: [
   //     {
   //       id: "analyticsdashboard",
   //       label: "Analytics",
-  //       link: "/dashboards-analytics",
-  //       parentId: "dashboard",
+  //       link: "/history",
+  //       parentId: "history",
   //     },
   //     {
-  //       id: "ecommercedashboard",
+  //       id: "ecommercehistory",
   //       label: "Ecommerce",
-  //       link: "/dashboard",
-  //       parentId: "dashboard",
+  //       link: "/history",
+  //       parentId: "history",
   //     },
   //     {
-  //       id: "emaildashboard",
+  //       id: "emailhistory",
   //       label: "Email",
-  //       link: "/dashboards-email",
-  //       parentId: "dashboard",
+  //       link: "/history",
+  //       parentId: "history",
   //     },
   //     {
-  //       id: "hrdashboard",
+  //       id: "hrhistory",
   //       label: "HR",
-  //       link: "/dashboards-hr",
-  //       parentId: "dashboard",
+  //       link: "/history",
+  //       parentId: "history",
   //     },
   //     // {
   //     //     id: 'socialdashboard',
@@ -71,26 +85,26 @@ const menuData: any = [
   //     // },
   //   ],
   // },
-//   {
-//     id: "landing",
-//     label: "Landing Page",
-//     link: "/#",
-//     icon: <PictureInPicture2 />,
-//     subItems: [
-//       {
-//         id: "onepage",
-//         label: "One Page",
-//         link: "/onepage-landing",
-//         parentId: "landing",
-//       },
-//       {
-//         id: "productlanding",
-//         label: "Product",
-//         link: "/product-landing",
-//         parentId: "landing",
-//       },
-//     ],
-//   },
+  //   {
+  //     id: "landing",
+  //     label: "Landing Page",
+  //     link: "/#",
+  //     icon: <PictureInPicture2 />,
+  //     subItems: [
+  //       {
+  //         id: "onepage",
+  //         label: "One Page",
+  //         link: "/onepage-landing",
+  //         parentId: "landing",
+  //       },
+  //       {
+  //         id: "productlanding",
+  //         label: "Product",
+  //         link: "/product-landing",
+  //         parentId: "landing",
+  //       },
+  //     ],
+  //   },
   // {
   //   label: "Apps",
   //   isTitle: true,

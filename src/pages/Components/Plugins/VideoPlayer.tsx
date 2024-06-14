@@ -10,20 +10,20 @@ const VideoPlayer = () => {
     const ref = React.useRef<APITypes>(null);
 
     const plyrVideo =
-        videoId && provider ? (
-            <Plyr
-                ref={ref}
-                source={{
-                    type: "video",
-                    sources: [
-                        {
-                            src: `https://www.youtube.com/embed/${videoId}`,
-                            provider: provider,
-                        },
-                    ],
-                }}
-            />
-        ) : null;
+      videoId && provider ? (
+        <Plyr
+          ref={ref}
+          source={{
+            type: "video",
+            sources: [
+              {
+                src: `https://storage.googleapis.com/dms-detection-footages-c241-ms01/2024-06-13/40e4fe42-c6a9-48e0-8745-461380e2ae5d-7264c5c4-dcda-4592-b5a2-c2d71dda0055.mp4`,
+                provider: provider,
+              },
+            ],
+          }}
+        />
+      ) : null;
 
     return (
         <div className="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">

@@ -1,11 +1,14 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/v1/auth";
+const API_URL = "http://localhost:9000/api/v1/auth";
 
-export interface User {
-  email: string;
-  password: string;
+export interface User{
   token: string;
+  user: {
+    email: string;
+    created_at: string;
+    id: string;
+  };
 }
 
 const signup = (email: string, password: string): Promise<User> => {
@@ -32,7 +35,10 @@ const login = (email: string, password: string): Promise<User> => {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
+      console.log(response)
       return response.data;
+    }).catch((e) =>{
+        throw new Error(e);
     });
 };
 

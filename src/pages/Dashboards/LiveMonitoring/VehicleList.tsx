@@ -2,8 +2,9 @@ import { ChevronRight } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import TableContainer from "Common/TableContainer";
 import { Link } from "react-router-dom";
-import { fetchVehicles, Vehicle } from "helpers/vehicleApi";
+
 import axios from "axios";
+import authService from "helpers/auth.service";
 
 const VehicleList = () => {
   // const [data, setData] = useState<Vehicle[]>([]);
@@ -70,7 +71,7 @@ const VehicleList = () => {
         <div className="card-body">
           <div className="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
             <div className="2xl:col-span-12">
-              <h6 className="text-15">Recent Alerts</h6>
+              <h6 className="text-15">Vehicle</h6>
             </div>
           </div>
           {loading ? (
@@ -88,7 +89,7 @@ const VehicleList = () => {
               theadclassName="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600"
               thclassName="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"
               tdclassName="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"
-              PaginationClassName="grid grid-col-12 items-center mt-5 md:flex-row"
+              PaginationClassName="grid grid-col-12 items-center gap-y-2 mt-5 md:flex-row"
             />
           )}
         </div>
