@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import authService from "helpers/auth.service";
 
+const API_URL = process.env.REACT_APP_API_URL;
 export interface Vehicle {
   id: string;
   created_at: string;
@@ -15,15 +15,13 @@ interface ApiResponse {
 
 export const listVehicles = (token: string): Promise<Vehicle[]> => {
   return axios
-    .get<ApiResponse>("http://localhost:9000/api/v1/vehicles", {
+    .get<ApiResponse>(API_URL + "/vehicles", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then((response: AxiosResponse<ApiResponse>) => {
-        console.log("API response:", response.data);
       if (response.data.vehicles) {
-        console.log("vehicles:", response.data.vehicles);
         return response.data.vehicles;
       } else {
         throw new Error("Invalid response format");

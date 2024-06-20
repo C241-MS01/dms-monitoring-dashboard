@@ -8,8 +8,8 @@ import Alerts from "pages/Dashboards/Alerts";
 // import PSimpleBar from "pages/Components/Plugins/Simplebar";
 import VideoPlayer from "pages/Components/Plugins/VideoPlayer";
 
-// // forms
-// import ReactDataTable from "pages/Components/Table/ReactTable";
+// forms
+import ReactDataTable from "pages/Components/Table/ReactTable";
 
 // // auth
 import Basic from "../pages/AuthenticationInner/Login/Basic";
@@ -58,7 +58,7 @@ const authProtectedRoutes: Array<RouteObject> = [
   { path: "/plugins-video-player", component: VideoPlayer },
 
   // // Table
-  // { path: "/tables-datatable", component: ReactDataTable },
+  { path: "/tables-datatable", component: ReactDataTable },
 
   // // profile
   // { path: "/user-profile", component: UserProfile },

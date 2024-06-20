@@ -5,7 +5,6 @@ import AlertDetail from './AlertDetails';
 import VehicleList from './VehicleList';
 import AlertHistory from './AlertHistory';
 
-
 const EmailDashboard = () => {
 
     return (

@@ -80,7 +80,7 @@ const Basic = () => {
                   htmlFor="username"
                   className="inline-block mb-2 text-base font-medium"
                 >
-                  UserName/ Email ID
+                  Email ID
                 </label>
                 <input
                   type="text"

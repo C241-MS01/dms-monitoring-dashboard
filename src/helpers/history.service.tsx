@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL;
 interface ApiResponse {
   alerts: Alert[];
 }
@@ -23,7 +24,7 @@ export const historyAlerts = (
 ): Promise<Alert[]> => {
   return axios
     .get<ApiResponse>(
-      `http://localhost:9000/api/v1/vehicles/${vehicle_id}/videos/${videoId}/alerts`,
+      API_URL + `/vehicles/${vehicle_id}/videos/${videoId}/alerts`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -31,9 +32,24 @@ export const historyAlerts = (
       }
     )
     .then((response: AxiosResponse<ApiResponse>) => {
-        console.log("API response:", response.data);
+
       if (response.data.alerts) {
-        return response.data.alerts;
+        const alerts = response.data.alerts.map((alert) => {
+          const formattedTime = new Intl.DateTimeFormat("id-ID", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          }).format(new Date(alert.time));
+          // Hapus kata "pukul" dari waktu yang diformat
+          return {
+            ...alert,
+            time: formattedTime.replace("pukul", "- ").trim(),
+          };
+        });
+        return alerts;
       } else {
         throw new Error("Invalid response format");
       }

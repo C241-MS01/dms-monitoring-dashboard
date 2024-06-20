@@ -6,9 +6,9 @@ import { createSelector } from 'reselect';
 
 //import images
 import userProfile from "assets/images/users/user-profile.png";
-import logoSm from "assets/images/logo-sm.png";
-import logoDark from "assets/images/logo-dark.png";
-import logoLight from "assets/images/logo-light.png";
+import logoSm from "assets/images/logo-braincore-sm.png";
+import logoDark from "assets/images/logo-braincore-light.png";
+import logoLight from "assets/images/logo-braincore-dark.png";
 
 //import components
 import LightDark from 'Common/LightDark';
@@ -37,8 +37,6 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
 
       useEffect(() => {
         const user = authService.getCurrentUser();
-        console.log(user);
-
         if (user && user.user && user.user.email) {
           setCurrentUser(user);
         }
@@ -254,7 +252,7 @@ const Header = ({ handleToggleDrawer, handleDrawer }: any) => {
                           {currentUser && currentUser.user.email}
                         </h6>
                         <p className="text-slate-500 dark:text-zink-300">
-                          CEO & Founder
+                          
                         </p>
                       </div>
                     </a>

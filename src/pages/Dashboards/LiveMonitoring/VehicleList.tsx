@@ -4,34 +4,44 @@ import TableContainer from "Common/TableContainer";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import authService from "helpers/auth.service";
+import authService, { User } from "helpers/auth.service";
+import { Vehicle, listVehicles } from "helpers/vehicle.service";
 
 const VehicleList = () => {
   // const [data, setData] = useState<Vehicle[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [vehicles, setVehicles] = useState();
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const response = await axios.get(
-        "http://localhost:8080/bwa-asset-management/vehicle/read.php"
-      ).then((res)=>{
-        setVehicles(res.data)
-        setLoading(false);
-      }).catch((err)=>{
-        setError(err)
-      });
-      return response;
-    };
-    fetchVehicles();
+    const user = authService.getCurrentUser();
+
+    if (user && user.user && user.user.email) {
+      setCurrentUser(user);
+    }
   }, []);
 
   useEffect(() => {
+    const fetchAndSetVehicles = async () => {
+      if (currentUser && currentUser.token) {
+        setLoading(true);
+        setError(null);
+        try {
+          const vehicleList = await listVehicles(currentUser.token);
+          setVehicles(vehicleList);
+        } catch (error) {
+          setError("Error fetching vehicles");
+          console.error("Error fetching vehicles:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
 
-    console.log("Data:", vehicles);
-  }, [vehicles]);
+    fetchAndSetVehicles();
+  }, [currentUser]);
 
   const columns = useMemo(
     () => [
@@ -41,8 +51,8 @@ const VehicleList = () => {
         enableColumnFilter: false,
         enableSorting: true,
         cell: (cell: any) => (
-          <Link to={`/live-monitoring/${cell.row.original.vehicleId}`}>
-            {cell.row.original.vehicleId}
+          <Link to={`/live-monitoring/${cell.row.original.id}`}>
+            {cell.row.original.id}
           </Link>
         ),
       },
@@ -53,7 +63,7 @@ const VehicleList = () => {
         cell: (cell: any) => (
           <div className="flex justify-end">
             <Link
-              to={`/live-monitoring/${cell.row.original.vehicleId}`}
+              to={`/live-monitoring/${cell.row.original.id}`}
               className="flex items-center justify-center size-8 transition-all duration-200 ease-linear rounded-md bg-slate-100 dark:bg-zink-600 dark:text-zink-200 text-slate-500 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/20"
             >
               <ChevronRight className="size-4" />

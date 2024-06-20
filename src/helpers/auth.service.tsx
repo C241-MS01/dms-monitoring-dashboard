@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:9000/api/v1/auth";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export interface User{
   token: string;
@@ -13,7 +13,7 @@ export interface User{
 
 const signup = (email: string, password: string): Promise<User> => {
   return axios
-    .post<User>(API_URL + "/signup", {
+    .post<User>(API_URL + "/auth/signup", {
       email,
       password,
     })
@@ -27,7 +27,7 @@ const signup = (email: string, password: string): Promise<User> => {
 
 const login = (email: string, password: string): Promise<User> => {
   return axios
-    .post<User>(API_URL + "/login", {
+    .post<User>(API_URL + "/auth/login", {
       email,
       password,
     })
@@ -35,10 +35,10 @@ const login = (email: string, password: string): Promise<User> => {
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
-      console.log(response)
       return response.data;
-    }).catch((e) =>{
-        throw new Error(e);
+    })
+    .catch((e) => {
+      throw new Error(e);
     });
 };
 

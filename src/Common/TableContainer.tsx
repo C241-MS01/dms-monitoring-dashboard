@@ -51,7 +51,7 @@ const DebouncedInput = ({
   value: string | number;
   onChange: (value: string | number) => void;
   debounce?: number;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>) => {
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">) => {
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
@@ -67,7 +67,11 @@ const DebouncedInput = ({
   }, [debounce, onChange, value]);
 
   return (
-    <input {...props} value={value} onChange={e => setValue(e.target.value)} />
+    <input
+      {...props}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
   );
 };
 interface TableContainerProps {
@@ -107,16 +111,15 @@ const TableContainer = ({
   customPageSize,
   isGlobalFilter,
   PaginationClassName,
-  SearchPlaceholder
+  SearchPlaceholder,
 }: TableContainerProps) => {
-
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState('');
+  const [globalFilter, setGlobalFilter] = useState("");
 
   const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue(columnId), value);
     addMeta({
-      itemRank
+      itemRank,
     });
     return itemRank.passed;
   };
@@ -137,7 +140,7 @@ const TableContainer = ({
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel()
+    getSortedRowModel: getSortedRowModel(),
   });
 
   const {
@@ -157,7 +160,7 @@ const TableContainer = ({
   useEffect(() => {
     Number(customPageSize) && setPageSize(Number(customPageSize));
   }, [customPageSize, setPageSize]);
-
+  
   return (
     <Fragment>
       <div className="grid grid-cols-12 lg:grid-cols-12 gap-3">

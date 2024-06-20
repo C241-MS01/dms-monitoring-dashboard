@@ -1,14 +1,14 @@
 import axios, { AxiosResponse } from "axios";
-import { Params } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL;
 interface ApiResponse {
   videos: Video[];
 }
 
 export interface Video {
+  created_at: string;
   id: string;
   url: string;
-  created_at: string;
 }
 
 export const listVehicleVideos = (
@@ -17,7 +17,7 @@ export const listVehicleVideos = (
 ): Promise<Video[]> => {
   return axios
     .get<ApiResponse>(
-      `http://localhost:9000/api/v1/vehicles/${vehicle_id}/videos`,
+      API_URL+`/vehicles/${vehicle_id}/videos`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -43,19 +43,29 @@ export const getVideosById = (
   videoId: string
 ): Promise<Video> => {
   return axios
-    .get<Video>(
-      `http://localhost:9000/api/v1/vehicles/${vehicle_id}/videos/${videoId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    .get<Video>(API_URL + `/vehicles/${vehicle_id}/videos/${videoId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((response: AxiosResponse<Video>) => {
-      console.log("API response:", response.data);
       if (response.data) {
-        console.log("API response:", response.data);
-        return response.data;
+        const formattedVideo = {
+          ...response.data,
+          created_at: new Intl.DateTimeFormat("id-ID", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          }).format(new Date(response.data.created_at)),
+        };
+        // Hapus kata "pukul" dari waktu yang diformat
+        formattedVideo.created_at = formattedVideo.created_at
+          .replace("pukul", "- ")
+          .trim();
+        return formattedVideo;
       } else {
         throw new Error("Invalid response format");
       }

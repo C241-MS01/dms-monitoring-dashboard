@@ -15,7 +15,6 @@ const VehicleList = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   useEffect(() => {
     const user = authService.getCurrentUser();
-    console.log(user);
 
     if (user && user.user && user.user.email) {
       setCurrentUser(user);
@@ -29,7 +28,7 @@ const VehicleList = () => {
         setError(null);
         try {
           const vehicleList = await listVehicles(currentUser.token);
-          console.log(vehicleList);
+
           setVehicles(vehicleList);
         } catch (error) {
           setError("Error fetching vehicles");
@@ -43,9 +42,7 @@ const VehicleList = () => {
     fetchAndSetVehicles();
   }, [currentUser]);
 
-  // useEffect(() => {
-  //   console.log("Data:", vehicles);
-  // }, [vehicles]);
+
 
   const columns = useMemo(
     () => [
@@ -80,8 +77,7 @@ const VehicleList = () => {
   );
 
   return (
-    <React.Fragment>
-      <div className="order-first col-span-12 md:col-span-3 xl:col-span-3 2xl:col-span-3">
+    <div className="order-first col-span-12 md:col-span-6  xl:col-span-4 2xl:col-span-4">
         <div className="card">
           <div className="card-body">
             <div className="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
@@ -110,7 +106,6 @@ const VehicleList = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
   );
 };
 
